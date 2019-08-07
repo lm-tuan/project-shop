@@ -788,6 +788,7 @@ section
 .product
 {
 	margin-bottom: 30px;
+	margin-top: 60px;
 }
 .product.home_item_large
 {
@@ -844,6 +845,8 @@ section
 	padding-right: 25px;
 	padding-top: 18px;
 	padding-bottom: 10px;
+	
+	
 }
 .product_name
 {

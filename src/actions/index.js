@@ -87,3 +87,18 @@ export const atcGetProduct = (product) => {
         product
     }
 }
+
+export const actGetCartRequest = () => {
+    return dispatch => {
+        return ApiCaller('carts',"GET",null).then(res => {
+            console.log(res.data);
+            dispatch(atcGetCart(res.data))
+        })
+    }
+}
+export const atcGetCart = (carts) => {
+    return {
+        type:types.SHOW_CART,
+        carts
+    }
+}

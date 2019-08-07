@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
-import Menu from '../../components/Menu/Menu';
-import Footer from '../../components/Footer/Footer';
+// import Menu from '../../components/Menu/Menu';
+// import Footer from '../../components/Footer/Footer';
 import ProductList from '../../components/ProductList/ProductList';
 import Slide from '../../components/Slides/Slide';
 import Header from '../../components/Header/Header';
@@ -22,7 +22,7 @@ class ActioProductPage  extends Component {
         txtName:'',
         numberPrice:'',
         numberRating:'',
-        fileImg:'/images/DBH04.jpg',
+        fileImg:'https://firebasestorage.googleapis.com/v0/b/uploads-d88c1.appspot.com/o/DBH10.jpg?alt=media&token=9e91035c-24a2-4780-9ae0-fc2646ac0a95',
         description:'',
         
        
@@ -129,7 +129,7 @@ class ActioProductPage  extends Component {
                           </div>
                           <div className="form-group">
                             <label >Rating</label>
-                            <input name="numberRating" type="number" className="form-control" value={this.state.numberRating} onChange = {this.onChange} />
+                            <input name="numberRating" type="number" min="1" max="5" className="form-control" value={this.state.numberRating} onChange = {this.onChange} />
                           </div>                       
                           <div className="form-group">
                             <label >Description</label>

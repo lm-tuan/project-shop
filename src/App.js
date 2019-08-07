@@ -1,11 +1,11 @@
 import React, { Component} from 'react';
 import './App.css';
-import Menu from './components/Menu/Menu';
+ import Menu from './components/Menu/Menu';
 import Footer from './components/Footer/Footer';
 import ProductList from './components/ProductList/ProductList';
-import Slide from './components/Slides/Slide';
-import Header from './components/Header/Header';
-import Featuer from './components/Feature/Feature';
+// import Slide from './components/Slides/Slide';
+// import Header from './components/Header/Header';
+// import Featuer from './components/Feature/Feature';
 import routes from './routes';
 import { Route ,Switch, BrowserRouter as Router } from 'react-router-dom';
 
@@ -30,6 +30,7 @@ class App extends Component {
     return  <Switch>{result}</Switch>;;
   }
  render(){
+   //console.log('render');
   
   return (
     <Router>

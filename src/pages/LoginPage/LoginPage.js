@@ -1,10 +1,10 @@
 import React, { Component} from 'react';
-import Menu from './../../components/Menu/Menu';
-import Footer from './../../components/Footer/Footer';
-import ProductList from './../../components/ProductList/ProductList';
-import Slide from './../../components/Slides/Slide';
-import Header from './../..//components/Header/Header';
-import ProductItem from './../../components/ProductItem/ProductItem';
+// import Menu from './../../components/Menu/Menu';
+// import Footer from './../../components/Footer/Footer';
+// import ProductList from './../../components/ProductList/ProductList';
+// import Slide from './../../components/Slides/Slide';
+// import Header from './../..//components/Header/Header';
+// import ProductItem from './../../components/ProductItem/ProductItem';
 
 
 

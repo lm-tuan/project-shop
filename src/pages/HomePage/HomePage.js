@@ -1,20 +1,17 @@
 import React, { Component} from 'react';
-import Menu from './../../components/Menu/Menu';
-import Footer from './../../components/Footer/Footer';
-import ProductList from './../../components/ProductList/ProductList';
-import Slide from './../../components/Slides/Slide';
-import Header from './../..//components/Header/Header';
-import ProductItem from './../../components/ProductItem/ProductItem';
+// import Menu from './../../components/Menu/Menu';
+
 import img1 from './../../components/Header/images/DBH01.jpg';
 import img2 from './../../components/Header/images/DBH02.jpg';
 import img3 from './../../components/Header/images/DBH03.jpg';
-import img4 from './../../components/Header/images/home-dbh-3.jpg';
+import {Link} from 'react-router-dom';
+// import img4 from './../../components/Header/images/home-dbh-3.jpg';
 
 
 class HomePage extends Component {
 
  render(){
-
+ 
   return (
     
       <div className="products">
@@ -23,7 +20,7 @@ class HomePage extends Component {
               <div className="container">
                 <h1 className="masthead-heading mb-0">One Page Wonder</h1>
                 <h2 className="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
-                <a href="#" className="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+                <Link to = "#" className="btn btn-primary btn-xl rounded-pill mt-5">Learn More</Link>
               </div>
             </div>
            

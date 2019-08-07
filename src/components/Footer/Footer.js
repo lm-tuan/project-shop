@@ -7,10 +7,10 @@ class Footer extends Component {
 
   return (
     <footer className="footer">
-          <div className="footer_content">
+          {/* <div className="footer_content">
             <div className="container">
               <div className="row">
-                {/* About */}
+              
                 <div className="col-lg-4 footer_col">
                   <div className="footer_about">
                     <div className="footer_logo">
@@ -26,7 +26,7 @@ class Footer extends Component {
                     </div>
                   </div>
                 </div>
-                {/* Footer Links */}
+             
                 <div className="col-lg-4 footer_col">
                   <div className="footer_menu">
                     <div className="footer_title">Support</div>
@@ -49,7 +49,7 @@ class Footer extends Component {
                     </ul>
                   </div>
                 </div>
-                {/* Footer Contact */}
+               
                 <div className="col-lg-4 footer_col">
                   <div className="footer_contact">
                     <div className="footer_title">Stay in Touch</div>
@@ -78,9 +78,9 @@ class Footer extends Component {
               <div className="row">
                 <div className="col">
                   <div className="footer_bar_content d-flex flex-md-row flex-column align-items-center justify-content-start">
-                    <div className="copyright order-md-1 order-2">{/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
+                    <div className="copyright order-md-1 order-2">
                       Copyright © All rights reserved | This template is made with <i className="fa fa-heart-o" aria-hidden="true" /> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                      {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}</div>
+                      </div>
                     <nav className="footer_nav ml-md-auto order-md-2 order-1">
                       <ul className="d-flex flex-row align-items-center justify-content-start">
                         <li><a href="category.html">Women</a></li>
@@ -94,7 +94,7 @@ class Footer extends Component {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </footer>
      
   );

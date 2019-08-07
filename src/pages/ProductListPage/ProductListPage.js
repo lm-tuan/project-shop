@@ -77,7 +77,7 @@ class ProductListPage extends Component {
  render(){
   
     const {products} = this.props;
-   // console.log(this.props.products);
+    
   
   return (
 
@@ -101,11 +101,7 @@ class ProductListPage extends Component {
             
             {/* Product */}
             
-          <div className="row load_more_row customs">
-            <div className="col">
-              <div className="button load_more ml-auto mr-auto"><a href="#">load more</a></div>
-            </div>
-          </div>
+         
 
         </div>
       </div>

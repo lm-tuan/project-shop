@@ -5,7 +5,8 @@ import AddProductPage from './pages/ActioProductPage/AddProductPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-
+import ProductDetailPage from './pages/ProductDetailPage/ProductDetailPage';
+import CartProductPage from './pages/CartProudctPage/CartProudctPage'
 
 const routes  = [
     {
@@ -39,6 +40,17 @@ const routes  = [
         path:'/login',
         exact:false,
         main: () => <LoginPage/>
+    },
+    
+    {
+        path: '/product/:id',
+        exact: false,
+        main: ({match, history}) => <ProductDetailPage match={match} history={history}/>
+    },
+    {
+        path: '/carts',
+        exact: true,
+        main: ({match, history}) => <CartProductPage match={match} history={history}/>
     },
     {
         path:'',

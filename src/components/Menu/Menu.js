@@ -8,6 +8,7 @@ import imgPhone from './../Header/images/phone.svg';
 
 
 
+
 const menus = [
     {
       name:'HOME',
@@ -129,7 +130,7 @@ class Menu extends Component {
             {/* User */}
             <div className="user"><a href="#"><div><img src={imgUser} /><div>1</div></div></a></div>
             {/* Cart */}
-            <div className="cart"><a href="cart.html"><div><img src={imgCart}  /></div></a></div>
+            <div className="cart"><Link to="/carts"><div><img src={imgCart}  /></div></Link></div>
             {/* Phone */}
             <div className="header_phone d-flex flex-row align-items-center justify-content-start">
               <div><div><img src={imgPhone}  /></div></div>

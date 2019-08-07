@@ -1,8 +1,8 @@
 import React, { Component} from 'react';
-import ProductItem from './../../components/ProductItem/ProductItem';
-import ProductList from './../../components/ProductList/ProductList';
-import ApiCaller from './../../ultils/ApiCaller';
-import { Link } from 'react-router-dom';
+// import ProductItem from './../../components/ProductItem/ProductItem';
+// import ProductList from './../../components/ProductList/ProductList';
+// import ApiCaller from './../../ultils/ApiCaller';
+// import { Link } from 'react-router-dom';
 
 
 
