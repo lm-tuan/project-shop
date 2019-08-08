@@ -9,6 +9,7 @@ import * as  actions from './../../actions/index';
 import imgCart from './../../components/Header/images/cart.svg';
 // import imgPhone from './../../components/Header/images/phone.svg';
 import imgHeart from './../../components/Header/images/heart_2.svg';
+import { thisExpression } from '@babel/types';
 
 
 class ProductDetailPage extends Component {
@@ -22,6 +23,8 @@ class ProductDetailPage extends Component {
             numberRating:'',
             fileImg:'',
             description:'',
+           
+           
         };
     }
 
@@ -47,12 +50,50 @@ class ProductDetailPage extends Component {
         }
         
     }
+
+    onSearChProductToCart = (carts, id) => {
+      var result = null;
+      carts.forEach((cart, i) => {
+          if(cart.product.id===id){
+            result = cart;
+           
+          }
+      });
+      return result;
+    }
+
     onAddToCart = (product) => {
-      console.log(product);
+      let {id,txtName,numberPrice,numberRating,fileImg,description} = product;
+      let newProduct = {
+        id,
+        name:txtName,
+        price:numberPrice,
+        rating:numberRating,
+        linkImg:fileImg,
+        description
+        
+      }
+      var quanlityNew = 0;
+      //console.log(this.onSearChProductToCart(this.props.carts,product.id));
+      var cart = this.onSearChProductToCart(this.props.carts,product.id);
+      if(cart=== null) {
+        quanlityNew = 0;
+
+      }else{
+        quanlityNew = cart.quanlity;
+      }
+      
+      if(window.confirm("Bạn có muốn thêm sản phẩm vào giỏ hàng hay không ?")){
+
+        this.props.onAddToCartRequest(newProduct,this.props.carts,quanlityNew + 1);
+        this.props.history.push({ pathname: '/carts' })
+      }
+     
+     
     }
     
     render(){
-        
+        console.log(this.props.carts)
         return (
  
             <div className="super_container_inner">
@@ -110,7 +151,8 @@ class ProductDetailPage extends Component {
 const mapStateToProps = state => {
     return {
         products:state.products,
-        itemEditing:state.itemEditing
+        itemEditing:state.itemEditing,
+        carts:state.carts
     }
   }
   const mapDispatchToProps = (dispatch, props) => {
@@ -118,6 +160,9 @@ const mapStateToProps = state => {
         
         atcGetProductRequest:(id) => {
             return dispatch(actions.atcGetProductRequest(id));
+        },
+        onAddToCartRequest: (product, listCarts,quanlity) => {
+          return dispatch(actions.addToCartRequest(product,listCarts,quanlity))
         }
   
     }

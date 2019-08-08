@@ -45,7 +45,7 @@ const routes  = [
     {
         path: '/product/:id',
         exact: false,
-        main: ({match, history}) => <ProductDetailPage match={match} history={history}/>
+        main: ({match, history,location}) => <ProductDetailPage location={location} match={match} history={history}/>
     },
     {
         path: '/carts',

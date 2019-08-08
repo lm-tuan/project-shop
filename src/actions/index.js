@@ -91,7 +91,7 @@ export const atcGetProduct = (product) => {
 export const actGetCartRequest = () => {
     return dispatch => {
         return ApiCaller('carts',"GET",null).then(res => {
-            console.log(res.data);
+           
             dispatch(atcGetCart(res.data))
         })
     }
@@ -100,5 +100,79 @@ export const atcGetCart = (carts) => {
     return {
         type:types.SHOW_CART,
         carts
+    }
+}
+
+
+const findIndex = (listCarts, id) => {
+    var index = -1;
+    listCarts.forEach((cart, i) => {
+        if(cart.product.id===id){
+            
+            index = i;
+        }
+    });
+    return index;
+}
+
+const searchCart = (carts, id) => {
+    var index = -1;
+    carts.forEach((cart, i) => {
+        if(cart.product.id===id){
+            index = cart.id;
+        }
+    });
+    return index;
+}
+
+
+
+
+export const addToCartRequest = (product,listCarts,quanlity) => {
+   
+    var index = findIndex(listCarts, product.id);
+    var id = searchCart(listCarts,product.id);
+
+        var cart = {
+            id:'',
+            product,
+            quanlity
+        }
+    
+    return dispatch => {
+        if(index === -1){
+            
+            return ApiCaller('carts',"POST",cart).then(res => {
+                console.log(res.data);
+                dispatch(addToCart(res.data,quanlity))
+            })
+        }
+        else
+        {
+           
+            var newCart = {
+                id,
+                product,
+                quanlity
+            };
+            
+            return ApiCaller(`carts/${id}`,"PUT",newCart).then(res => {
+                console.log(res.data.product);
+                dispatch(addToCart(res.data,quanlity))
+            })
+
+        }
+        
+       
+       
+    }
+
+}
+
+export const addToCart = (product, quantity) => {
+    return {
+        type:types.ADD_TO_CART,
+        product,
+        quantity
     }
 }
