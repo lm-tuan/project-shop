@@ -20,8 +20,7 @@ const carts = (state = initialState, action) => {
 
 
         case types.ADD_TO_CART: 
-        console.log(action);
-        console.log(state);
+       
          var index = findIndex(state,action.cart.id);
          console.log(index);
        
@@ -49,7 +48,36 @@ const carts = (state = initialState, action) => {
         }
 
         return [...state];
+
+
+        case types.UPDATE_PRODUCT_IN_CART:       
+       console.log()
+        let indexCart = findIndex(state,action.cart.id);
+        if(indexCart !== -1) {
+            console.log(action.cart);
+            state = [
+                ...state.slice(0,indexCart),
+                {
+                    ...action.cart,quanlity:action.cart.quanlity
+                },
+                ...state.slice(indexCart + 1 )
+            ]
+            
+        }
+        console.log(state);
+        return [...state]
         
+        case types.DELETE_CART: 
+        let indexCarttoDelete = findIndex(state,action.cart.id);
+        state = [
+            ...state.slice(0,indexCarttoDelete),
+            ...state.slice(indexCarttoDelete + 1 )
+        ]
+        console.log(action);
+        return [...state];
+         
+         
+
        
         default:
             return [...state]

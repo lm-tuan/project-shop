@@ -166,9 +166,7 @@ export const addToCartRequest = (product,listCarts,quanlity) => {
             })
 
         }
-        
-       
-       
+ 
     }
 
 }
@@ -176,6 +174,40 @@ export const addToCartRequest = (product,listCarts,quanlity) => {
 export const addToCart = (cart, quantity) => {
     return {
         type:types.ADD_TO_CART,
+        cart
+    }
+}
+
+export const updateToCartRequest = (cart,quanlity) => {
+    console.log(cart);
+    console.log(quanlity);
+    var cartNew = {...cart,quanlity}
+    return dispatch => {
+        return ApiCaller(`carts/${cart.id}`,"PUT",cartNew).then(res => {
+            console.log(res.data);
+            dispatch(updateToCart(res.data))
+        })
+    }
+}
+
+export const updateToCart = (cart) => {
+    return {
+        type:types.UPDATE_PRODUCT_IN_CART,
+        cart
+    }
+}
+
+export const onDeteCartRequest = (cart) => {
+    return dispatch => {
+        return ApiCaller(`carts/${cart.id}`,'DELETE', null).then (err =>  {
+            dispatch(onDeteCart(cart))
+        })
+    }
+}
+
+export const onDeteCart = (cart) => {
+    return {
+        type:types.DELETE_CART,
         cart
     }
 }
