@@ -5,7 +5,7 @@ const initialState = [];
     const findIndex = (carts, id) => {
         var index = -1;
         carts.forEach((cart, i) => {
-            if(cart.product.id===id){
+            if(cart.id===id){
                 index = i;
             }
         });
@@ -20,38 +20,31 @@ const carts = (state = initialState, action) => {
 
 
         case types.ADD_TO_CART: 
-        var index = findIndex(state,action.product.id);
-        console.log(index);
+        console.log(action);
+        console.log(state);
+         var index = findIndex(state,action.cart.id);
+         console.log(index);
        
         console.log(action);
 
         if(index === -1) {
-            var cart = {
-                
-                product:action.product,
-                quanlity:action.quanlity
-            }
-            console.log(cart);
-            state = [...state, cart];
+            console.log('th1');
+            state = [...state, action.cart];
             console.log(state);
 
         }else{
-
-            var cart = {
-                
-                product:action.product,
-                quanlity:action.quanlity
-            }
-            
+            console.log('th2');
             state = [
                 ...state.slice(0, index),
                 {
-                   ...cart,
-                   quanlity:++action.quanlity
+                   ...action.cart,
+                   quanlity:action.cart.quanlity++
                     
                 },
                 ...state.slice(index +1)
             ];
+
+            console.log(state);
             
         }
 

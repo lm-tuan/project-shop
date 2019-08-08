@@ -82,8 +82,8 @@ class CartProudctPage extends Component {
                     {/* Cart Buttons */}
                     <div className="cart_buttons d-flex flex-row align-items-start justify-content-start">
                       <div className="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-                        <div className="button button_clear trans_200"><a href="categories.html">clear cart</a></div>
-                        <div className="button button_continue trans_200"><a href="categories.html">continue shopping</a></div>
+                        <div className="button button_clear trans_200"><a href="categories.html">clear ALL</a></div>
+                        <div className="button button_continue trans_200"><a href="categories.html">Back Home</a></div>
                       </div>
                     </div>
                   </div>

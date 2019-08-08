@@ -10,9 +10,7 @@ class cartList extends Component {
 
   
     render(){
-      
-       
-       
+
         return (
             <div className="cart_items">
             <ul className="cart_items_list">

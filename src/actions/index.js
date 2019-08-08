@@ -128,10 +128,14 @@ const searchCart = (carts, id) => {
 
 
 
+
+
+
 export const addToCartRequest = (product,listCarts,quanlity) => {
    
     var index = findIndex(listCarts, product.id);
     var id = searchCart(listCarts,product.id);
+    //var idCart = searchToCart(listCarts,product.id);
 
         var cart = {
             id:'',
@@ -144,7 +148,7 @@ export const addToCartRequest = (product,listCarts,quanlity) => {
             
             return ApiCaller('carts',"POST",cart).then(res => {
                 console.log(res.data);
-                dispatch(addToCart(res.data,quanlity))
+                dispatch(addToCart(res.data))
             })
         }
         else
@@ -157,8 +161,8 @@ export const addToCartRequest = (product,listCarts,quanlity) => {
             };
             
             return ApiCaller(`carts/${id}`,"PUT",newCart).then(res => {
-                console.log(res.data.product);
-                dispatch(addToCart(res.data,quanlity))
+                console.log(res.data);
+                dispatch(addToCart(res.data))
             })
 
         }
@@ -169,10 +173,9 @@ export const addToCartRequest = (product,listCarts,quanlity) => {
 
 }
 
-export const addToCart = (product, quantity) => {
+export const addToCart = (cart, quantity) => {
     return {
         type:types.ADD_TO_CART,
-        product,
-        quantity
+        cart
     }
 }

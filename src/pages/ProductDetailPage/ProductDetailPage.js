@@ -84,6 +84,8 @@ class ProductDetailPage extends Component {
       }
       
       if(window.confirm("Bạn có muốn thêm sản phẩm vào giỏ hàng hay không ?")){
+        console.log(newProduct);
+        console.log(quanlityNew);
 
         this.props.onAddToCartRequest(newProduct,this.props.carts,quanlityNew + 1);
         this.props.history.push({ pathname: '/carts' })
