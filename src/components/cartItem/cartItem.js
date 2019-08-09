@@ -1,30 +1,28 @@
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from './../../actions/index';
-// import { Link } from 'react-router-dom';
+
 
 class cartItem extends Component {
    
     onUpdateToCartInCrese = (cart,quanlity) => {
         this.props.updateToCartRequest(cart,quanlity+1);
     }
+
     onUpdateToCartRecuder = (cart,quanlity) => {
         this.props.updateToCartRequest(cart,quanlity-1);
     }
+
     onDeteCartRequest = (cart) => {
         if(window.confirm('Bạn có chắc muốn xóa sản phẩm này ra khỏi giỏ hàng  !')){
             this.props.onDeteCartRequest(cart);
         }
-
     }
+
     render(){  
       
          const {cart, index} = this.props;
-        
-        
-            return (
-           
-                   
+            return (    
                 <li className="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
                 <div className="product_customs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
                     <div><div className="product_number">{index + 1}</div></div>
@@ -51,17 +49,14 @@ class cartItem extends Component {
                 </li>
                     
             );
-        
-       
        }
 }
 
 
 const mapStateToProps = state =>  {
-    return {
-             
-         }
+    return {}
  }
+
  const mapDispathToProps = (dispatch, props) => {
      return {
         updateToCartRequest: (cart, quanlity) => dispatch(actions.updateToCartRequest(cart, quanlity)),

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {URL_API} from './../contants/ApiTypes';
 
-
  const ApiCaller = ( endpoint, method = "GET", body) => {
     return axios({
         method,

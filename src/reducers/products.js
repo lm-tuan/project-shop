@@ -2,6 +2,7 @@ import * as types from './../contants/typesAction';
 
 const initialState = [];
 
+// function find index product in prodcuts
 const findIndex = (products, id) => {
     var index = -1;
     products.forEach((product, i) => {
@@ -12,26 +13,28 @@ const findIndex = (products, id) => {
     return index;
 }
 
+
 const products = (state = initialState, action) => {
     switch (action.type) {
-        case types.SHOW_PRODUCT:       
-            //console.log(action);  
+
+        //display products
+        case types.SHOW_PRODUCT:        
             state = action.products
             return [...state]
+        //add product in products
         case types.ADD_PRODUCT:       
-          //  console.log(action);  
             state = [...state,action.product];
             return [...state] ;
 
+        //delete a product from products  
         case types.DELETE_PRODUCT:  
         var index = findIndex(state,action.id);     
         state = [...state.slice(0, index), ...state.slice(index+1)];
         return [...state];
 
+        //update a product in products
         case types.UPDATE_PRODUCT:  
         var idex = findIndex(state,action.product.id);     
-       // state = [...state.slice(0, index), ...state.slice(index+1)];
-      // console.log(idex);
         state = [...state.slice(0, idex),
             {
                 ...action.product,
@@ -42,10 +45,8 @@ const products = (state = initialState, action) => {
                 linkImg: action.product.linkImg
             }
             , ...state.slice(idex+1)];
-           // console.log(state);
-        return [...state];
-
-        
+            return [...state];  
+            
         default:
             return [...state]
     }

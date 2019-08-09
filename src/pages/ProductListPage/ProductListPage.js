@@ -1,29 +1,16 @@
 import React, { Component} from 'react';
-import ProductItem from './../../components/ProductItem/ProductItem';
-import ProductList from './../../components/ProductList/ProductList';
-import ApiCaller from './../../ultils/ApiCaller';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import ProductItem from './../../components/ProductItem/ProductItem';
+import ProductList from './../../components/ProductList/ProductList';
 import * as  actions from './../../actions/index';
 
 
 class ProductListPage extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            products:[]
-
-        }
-
-    }
-
+   
     componentDidMount(){
-        // ApiCaller('products', "GET", null).then( res => {
-        //     console.log(res);
-        //    this.setState({
-        //        products:res.data
-        //    })
-        // })
+      
         this.props.actShowProductsRequest();
     }
 
@@ -38,21 +25,13 @@ class ProductListPage extends Component {
     } 
 
     onDeleteProduct = (id) => {
-        var {products} = this.state;
-        let index = this.findIndex(products,id);
-        let product = products[index];
         if(window.confirm("Bạn có muốn xóa sản phẩm này không ?")){
-            this.props.actDeleteProductRequest(id);
-            
+            this.props.actDeleteProductRequest(id);     
         }
-       
-
     }
 
     onEditProduct = (id) => {
-       // console.log(id);
-         this.props.onEditProduct(id);
-        console.log(id);
+         this.props.onEditProduct(id);  
     }
   
     ShowContentProducts = (products) => {
@@ -69,23 +48,17 @@ class ProductListPage extends Component {
                         />
             })
         }
-       
         return result;
     }
 
 
  render(){
-  
-    const {products} = this.props;
+   const {products} = this.props;
     
-  
   return (
-
-    
       <div className="products">
         <div className="container">
-          <div className="row products_row">
-            
+          <div className="row products_row"> 
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div className="row load_more_row">
                 <div className="col">
@@ -93,19 +66,12 @@ class ProductListPage extends Component {
                 </div>
             </div>
             </div>
-            {/* Product */}
                 <ProductList> 
                     {this.ShowContentProducts(products)}
                 </ProductList>
             </div>
-            
-            {/* Product */}
-            
-         
-
         </div>
       </div>
-
   );
  }
 }
@@ -121,16 +87,12 @@ const mapDispatchToProps = (dispatch, props) => {
         actShowProductsRequest: () => {
             return dispatch(actions.actShowProductsRequest());
         },
-       
         actDeleteProductRequest:(id) => {
             return dispatch(actions.actDeleteProductRequest(id));
         },
         onEditProduct: (id) => {
             return dispatch(actions.atcGetProductRequest(id));
-        }
-        
-
-        
+        }    
     }
 }
 

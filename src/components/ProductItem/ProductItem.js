@@ -3,29 +3,23 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as  actions from './../../actions/index';
 
-
-
-
 class ProductItem extends Component {
-  onDeleteProduct = (id) => {
-    //console.log(this.props.actDeleteProductRequest(id));
 
+  onDeleteProduct = (id) => {
     this.props.onDeleteProduct(id);
   }
 
   onEditProduct = (id) => {
-    //console.log(id);
     this.props.onEditProduct(id);
   }
+
  render(){
  
   const {product} =  this.props;
-  console.log(product);
- 
   return (
   
     <div className="col-xl-4 col-md-6">
-    <div className="product customs">
+      <div className="product customs">
       <div className="product_image"><img src={product.linkImg} alt="" /></div>
       <div className="product_content">
         <div className="product_info d-flex flex-row align-items-start justify-content-start">
@@ -71,7 +65,6 @@ class ProductItem extends Component {
  }
 }
 
-
 const mapStateToProps = state => {
   return {
       products:state.products
@@ -83,10 +76,8 @@ const mapDispatchToProps = (dispatch, props) => {
       atcGetProductRequest:(id) => {
         return dispatch(actions.atcGetProductRequest(id));
     }
-
   }
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(ProductItem);
 

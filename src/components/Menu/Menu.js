@@ -5,6 +5,7 @@ import imgSearch from './../Header/images/search.png';
 import imgUser from './../Header/images/user.svg';
 import imgCart from './../Header/images/cart.svg';
 import imgPhone from './../Header/images/phone.svg';
+import { connect} from 'react-redux';
 
 
 
@@ -52,9 +53,6 @@ const MenuLink = ({lable,to,activeOnlyWhenAxact}) => {
   );
 }
 
-
-
-
 class Menu extends Component {
 
   ShowMenuLink = (menus) => {
@@ -71,10 +69,10 @@ class Menu extends Component {
     }
     return result;
   }
-
+  
 
  render(){
-
+  
   return (
     <div>
     {/* Menu */}
@@ -91,7 +89,7 @@ class Menu extends Component {
       {/* Contact Info */}
       <div className="menu_contact">
         <div className="menu_phone d-flex flex-row align-items-center justify-content-start">
-          <div><div><img src="images/phone.svg" /></div></div>
+          <div><div><img src="images/phone.svg" alt="phone" /></div></div>
           <div>+035-912-4552</div>
         </div>
         
@@ -103,12 +101,12 @@ class Menu extends Component {
         <div className="header_overlay" />
         <div className="header_content d-flex flex-row align-items-center justify-content-start">
           <div className="logo">
-            <a href="#">
+            <Link to="/">
               <div className="d-flex flex-row align-items-center justify-content-start">
-                <div><img src="images/logo_1.png" alt="" /></div>
+                <div><img src="images/logo_1.png" alt="logo" /></div>
                 <div>DRAGON BALL FIGURE</div>
               </div>
-            </a>	
+            </Link>	
           </div>
         
           <nav className="main_nav">
@@ -128,23 +126,32 @@ class Menu extends Component {
               </form>
             </div>
             {/* User */}
-            <div className="user"><a href="#"><div><img src={imgUser} /><div>1</div></div></a></div>
+            <div className="cart"><Link to="/"><div><img src={imgUser}  alt="userfont" /><div></div></div></Link></div>
             {/* Cart */}
-            <div className="cart"><Link to="/carts"><div><img src={imgCart}  /></div></Link></div>
+           
+            <div className="user"><Link to="/carts"><div><img src={imgCart} alt="cartfont" /> <div>{this.props.carts.length ===0 ?'!':this.props.carts.length}</div></div></Link></div>
             {/* Phone */}
             <div className="header_phone d-flex flex-row align-items-center justify-content-start">
-              <div><div><img src={imgPhone}  /></div></div>
+              <div><div><img src={imgPhone} alt="imgphone"  /></div></div>
               <div>+0-359-124-552</div>
             </div>
           </div>
         </div>
       </header>
- 
     </div>
-  </div>
-     
+  </div>     
   );
  }
 }
 
-export default Menu;
+
+const mapStateToProps = state =>  {
+  return {
+           carts:state.carts
+       }
+}
+const mapDispathToProps = (dispatch, props) => {
+   return {}
+}
+
+export default connect(mapStateToProps,mapDispathToProps)(Menu);

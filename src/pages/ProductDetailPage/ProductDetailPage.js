@@ -1,16 +1,8 @@
 import React, { Component} from 'react';
-
-// import ApiCaller from './../../ultils/ApiCaller';
-import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as  actions from './../../actions/index';
-// import imgSearch from './../../components/Header/images/search.png';
-// import imgUser from './../../components/Header/images/user.svg';
 import imgCart from './../../components/Header/images/cart.svg';
-// import imgPhone from './../../components/Header/images/phone.svg';
 import imgHeart from './../../components/Header/images/heart_2.svg';
-import { thisExpression } from '@babel/types';
-
 
 class ProductDetailPage extends Component {
 
@@ -22,21 +14,17 @@ class ProductDetailPage extends Component {
             numberPrice:'',
             numberRating:'',
             fileImg:'',
-            description:'',
-           
-           
+            description:'',  
         };
     }
 
-    componentDidMount(){
-       
+    componentDidMount(){  
         var {match} = this.props;
         if(match){
             this.props.atcGetProductRequest(match.params.id)
         }
     }
     componentWillReceiveProps(nextProps){
-        
         if(nextProps){
             let {id, name,price,rating,linkImg,description} = nextProps.itemEditing;
             this.setState({
@@ -47,16 +35,14 @@ class ProductDetailPage extends Component {
               fileImg:linkImg,
               description
             })
-        }
-        
+        } 
     }
 
     onSearChProductToCart = (carts, id) => {
       var result = null;
       carts.forEach((cart, i) => {
           if(cart.product.id===id){
-            result = cart;
-           
+            result = cart;   
           }
       });
       return result;
@@ -74,33 +60,26 @@ class ProductDetailPage extends Component {
         
       }
       var quanlityNew = 0;
-      //console.log(this.onSearChProductToCart(this.props.carts,product.id));
       var cart = this.onSearChProductToCart(this.props.carts,product.id);
       if(cart=== null) {
         quanlityNew = 0;
-
       }else{
         quanlityNew = cart.quanlity;
       }
       
       if(window.confirm("Bạn có muốn thêm sản phẩm vào giỏ hàng hay không ?")){
-        console.log(newProduct);
-        console.log(quanlityNew);
-
         this.props.onAddToCartRequest(newProduct,this.props.carts,quanlityNew + 1);
         this.props.history.push({ pathname: '/carts' })
-      }
-     
-     
+      } 
     }
     
     render(){
-        console.log(this.props.carts)
+       
         return (
  
             <div className="super_container_inner">
             {/* Product */}
-            <div className="product">
+             <div className="product">
               <div className="container">
                 <div className="row">
                   {/* Product Image */}
@@ -109,7 +88,7 @@ class ProductDetailPage extends Component {
                       <div id="slider" className="flexslider">
                         <ul className="slides">
                           <li>
-                          <img src={`./../${this.state.fileImg}`} />
+                          <img src={`./../${this.state.fileImg}`} alt="imgfile" />
                           </li>
                         </ul>
                       </div>
@@ -135,7 +114,7 @@ class ProductDetailPage extends Component {
                     </div>
                         <div className="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
                         <div><div>
-                            <Link onClick = {() => this.onAddToCart(this.state)} > <img src={imgCart} className="svg" alt="" /> </Link> <div>+</div></div></div>
+                            <button onClick = {() => this.onAddToCart(this.state)} > <img src={imgCart} className="svg" alt="" /> </button> <div>+</div></div></div>
                         </div>
                         </div>
                       </div>
@@ -157,18 +136,16 @@ const mapStateToProps = state => {
         carts:state.carts
     }
   }
+
   const mapDispatchToProps = (dispatch, props) => {
-    return {
-        
+    return { 
         atcGetProductRequest:(id) => {
             return dispatch(actions.atcGetProductRequest(id));
         },
         onAddToCartRequest: (product, listCarts,quanlity) => {
           return dispatch(actions.addToCartRequest(product,listCarts,quanlity))
         }
-  
     }
   }
-  
   
   export default connect(mapStateToProps,mapDispatchToProps)(ProductDetailPage);
